@@ -1,0 +1,40 @@
+<h1>Aerolineas con 2 Vuelos por dia</h1>
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar vuelo">
+    </mat-form-field>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="idAerolinea">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idAerolinea}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombreAerolinea">
+        <th mat-header-cell *matHeaderCellDef> Nombre Aerolinea </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreAerolinea}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="dia">
+        <th mat-header-cell *matHeaderCellDef> Fecha </th>
+        <td mat-cell *matCellDef="let element"> {{element.dia | date:'dd/MM/yyyy'}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="numVuelos">
+        <th mat-header-cell *matHeaderCellDef> Numero de Vuelos </th>
+        <td mat-cell *matCellDef="let element"> {{element.numVuelos}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25,100]"></mat-paginator>

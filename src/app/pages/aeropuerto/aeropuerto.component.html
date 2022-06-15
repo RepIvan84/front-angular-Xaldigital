@@ -1,0 +1,28 @@
+<h1>Aeropuerto con Mayor Movimiento en el Año</h1>
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar Aeropuerto">
+    </mat-form-field>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="idAeropuerto">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idAeropuerto}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombreAeropuerto">
+        <th mat-header-cell *matHeaderCellDef> Nombre Aeropuerto </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreAeropuerto}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25,100]"></mat-paginator>

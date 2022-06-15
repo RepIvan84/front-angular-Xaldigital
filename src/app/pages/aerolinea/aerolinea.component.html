@@ -1,0 +1,27 @@
+<h1>Aerolinea que ha Realizado mas Vuelos en el Año</h1>
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar Aerolinea">
+    </mat-form-field>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="idAerolinea">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.idAerolinea}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombreAerolinea">
+        <th mat-header-cell *matHeaderCellDef> Nombre Aerolinea </th>
+        <td mat-cell *matCellDef="let element"> {{element.nombreAerolinea}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>

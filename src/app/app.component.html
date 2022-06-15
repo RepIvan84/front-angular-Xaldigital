@@ -1,0 +1,83 @@
+<div class="example-container">
+  <mat-toolbar color="primary" class="example-toolbar">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon *ngIf="!sidenav.opened">menu_open</mat-icon>
+      <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+    </button>
+
+    <h1 class="example-app-name">XALDIGITAL-APP</h1>
+
+    <span class="example-spacer"></span>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/perfil">
+        <mat-icon>account_box</mat-icon>
+        <span>Mi Perfil</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.opened = false">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Cerrar Sesión</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container">
+    <mat-sidenav #sidenav style="width: 500px" mode="over">
+      <img src="assets/xd.png" width="128" style="margin-left: 20px">
+
+
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/aeropuerto" style="cursor: pointer">
+        <mat-icon>local_airport</mat-icon>
+        <span>1.Aeropuerto con Mayor Movimiento</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/aerolinea" style="cursor: pointer">
+        <mat-icon>flight_takeoff</mat-icon>
+        <span>2.Aerolinea con Mayor Num de Vuelos</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/vuelos-dia" style="cursor: pointer">
+        <mat-icon>flight_takeoff</mat-icon>
+        <span>3.Dia en que se han tenido Mayor Num de Vuelos</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/vuelos" style="cursor: pointer">
+        <mat-icon>flight_takeoff</mat-icon>
+        <span>4.Aerolineas con 2 Vuelos por dia</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>5.Api Respuestas Contestadas</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer-no-res" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>6.Api Respuestas No Contestadas</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer-mayor-r" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>7.Api Respuesta Mayor Reputacion</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer-menor-v" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>8.Api Respuesta Menor Numero de Vistas</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer-antigua" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>9.Api Respuesta mas Antigua</span>
+      </button>
+      <button mat-menu-item (click)="sidenav.toggle()" routerLink="/pages/api-consumer-actual" style="cursor: pointer">
+        <mat-icon>question_answer</mat-icon>
+        <span>10.Api Respuesta mas Actual</span>
+      </button>
+      <mat-divider></mat-divider>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+
+
+  </mat-sidenav-container>
+
+</div>

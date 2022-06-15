@@ -1,0 +1,45 @@
+<h1>Respuesta mas Actual</h1>
+
+<div class="example-header">
+    <mat-form-field>
+        <input matInput (keyup)="filtrar($event)" placeholder="Buscar Respuesta Contestadas">
+    </mat-form-field>
+</div>
+
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="link">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Link Publicacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.link}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Titulo </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="is_answered">
+        <th mat-header-cell *matHeaderCellDef> Contestada </th>
+        <td mat-cell *matCellDef="let element"> {{element.is_answered}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="view_count">
+        <th mat-header-cell *matHeaderCellDef> Numero de Vistas </th>
+        <td mat-cell *matCellDef="let element"> {{element.view_count}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="creation_date">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Publicacion </th>
+        <td mat-cell *matCellDef="let element"> {{element.creation_date}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[5,10,25,100]"></mat-paginator>
